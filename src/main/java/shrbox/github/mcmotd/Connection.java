@@ -8,12 +8,15 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class Connection {
-    public static String getURL(String address,String port) {
+    public static String getURL(String address, String port) {
         try {
-            URL url = new URL("http://motdpe.blackbe.xyz/api.php?ip="+address+"&port="+port);
+            URL url = new URL("http://motdpe.blackbe.xyz/api.php?ip=" + address + "&port=" + port);
             URLConnection urlConnection = url.openConnection();
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlConnection;
-            if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) return "0";
+            if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                System.out.println(httpURLConnection.getResponseCode());
+                return "";
+            }
             InputStream inputStream = httpURLConnection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -25,6 +28,6 @@ public class Connection {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "0";
+        return "";
     }
 }
