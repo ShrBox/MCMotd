@@ -38,6 +38,6 @@ public class MThread extends Thread {
             return;
         }
         e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
-                .plus("\n[MCMotd for Mirai]\nIP: " + domain + "\nMotd: " + serverinfo.motd + "\n协议版本: " + serverinfo.agreement + "\n游戏版本: " + serverinfo.version + "\n在线: " + serverinfo.online + "/" + serverinfo.max + "\n游戏模式: " + serverinfo.gamemode));
+                .plus("\n[MCMotd for Mirai]\nIP: " + domain + "\nMotd: " + serverinfo.motd + "\n协议版本: " + serverinfo.agreement + "\n游戏版本: " + serverinfo.version + "\n在线: " + serverinfo.online + "/" + serverinfo.max + "\n游戏模式: " + serverinfo.gamemode + "\n调用接口号: " + MMain.api));
     }
 }
