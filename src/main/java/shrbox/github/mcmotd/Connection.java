@@ -29,17 +29,17 @@ public class Connection {
                     } else {
                         url = new URL("http://motdpe.blackbe.xyz/api.php?ip=" + address + "&port=" + port);
                     }
+                    if (MMain.api == 1) {
+                        MMain.api = 2;
+                    } else {
+                        MMain.api = 1;
+                    }
                     tryc++;
                 } else {
-                    MMain.api = 2;
                     tryc = 3;
                 }
             }
-
-            if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                return "";
-            }
-
+            if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) return "";
             InputStream inputStream = httpURLConnection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
