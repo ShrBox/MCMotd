@@ -17,9 +17,20 @@ public class MThread extends Thread {
     public void run() {
         String msg = e.getMessage().contentToString();
         String domain = msg.replace("!motdpe", "").toLowerCase().trim();
-        if (domain.equals("")) {
-            e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
-                    .plus("请输入一个地址"));
+        switch (domain) {
+            case "" :
+                e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
+                        .plus("请输入一个地址"));
+                return;
+            case "switch" :
+                if (MMain.api == 1) {
+                    MMain.api = 2;
+                } else {
+                    MMain.api = 1;
+                }
+                e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
+                        .plus("接口已切换接口号 " + MMain.api));
+                return;
         }
         String port = "19132";
         if (domain.contains(":")) {
@@ -27,7 +38,7 @@ public class MThread extends Thread {
         }
         String Json = Connection.getURL(domain, port);
         if (Json.equals("")) {
-            e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender())).plus("接口无响应"));
+            e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender())).plus("接口无响应 接口号 " + MMain.api));
             return;
         }
         Gson gson = new Gson();
