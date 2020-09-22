@@ -10,44 +10,18 @@ import java.net.URLConnection;
 public class Connection {
     public static String getURL(String address, String port) {
         try {
-            URL url = null;
-            if (MMain.api == 1) {
-                url = new URL("http://motdpe.blackbe.xyz/api.php?ip=" + address + "&port=" + port);
-            } else {
-                url = new URL("https://motdpe.xiaomen.online:10185/api.php?ip=" + address + "&port=" + port);
-            }
-
-            URLConnection urlConnection = null;
-            HttpURLConnection httpURLConnection = null;
-
-            for (int tryc = 1; tryc <= 2;) {
-                urlConnection = url.openConnection();
-                httpURLConnection = (HttpURLConnection) urlConnection;
-                if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                    if (MMain.api == 1) {
-                        url = new URL("https://motdpe.xiaomen.online:10185/api.php?ip=" + address + "&port=" + port);
-                    } else {
-                        url = new URL("http://motdpe.blackbe.xyz/api.php?ip=" + address + "&port=" + port);
-                    }
-                    if (MMain.api == 1) {
-                        MMain.api = 2;
-                    } else {
-                        MMain.api = 1;
-                    }
-                    tryc++;
-                } else {
-                    tryc = 3;
-                }
-            }
+            URL url = new URL("http://motdpe.blackbe.xyz/api.php?ip=" + address + "&port=" + port);
+            URLConnection urlConnection = url.openConnection();
+            HttpURLConnection httpURLConnection = (HttpURLConnection) urlConnection;
             if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) return "";
             InputStream inputStream = httpURLConnection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String re = bufferedReader.readLine();
+            String return_value = bufferedReader.readLine();
             inputStream.close();
             inputStreamReader.close();
             bufferedReader.close();
-            return re;
+            return return_value;
         } catch (Exception e) {
             e.printStackTrace();
         }
