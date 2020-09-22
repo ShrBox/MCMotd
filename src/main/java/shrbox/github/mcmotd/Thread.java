@@ -33,7 +33,7 @@ public class Thread extends java.lang.Thread {
         Serverinfo serverinfo = gson.fromJson(Json, Serverinfo.class);
         if (serverinfo.status.equals("offline")) {
             e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
-                    .plus("服务器不在线"));
+                    .plus("[MCMotd] 服务器不在线"));
             return;
         }
         e.getGroup().sendMessage("[MCMotd]\nMotd: " + serverinfo.motd + "\n协议版本: " + serverinfo.agreement + "\n游戏版本: " + serverinfo.version + "\n在线: " + serverinfo.online + "/" + serverinfo.max + "\n游戏模式: " + serverinfo.gamemode);
