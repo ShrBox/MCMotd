@@ -15,7 +15,7 @@ public class Thread extends java.lang.Thread {
     public void run() {
         String msg = e.getMessage().contentToString();
         String domain = msg.replace("!motdpe", "").toLowerCase().trim();
-        if (e.getMessage().contentToString() == "") {
+        if (e.getMessage().contentToString().equals("")) {
             e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
                     .plus("请输入一个地址"));
             return;
@@ -32,8 +32,7 @@ public class Thread extends java.lang.Thread {
         Gson gson = new Gson();
         Serverinfo serverinfo = gson.fromJson(Json, Serverinfo.class);
         if (serverinfo.status.equals("offline")) {
-            e.getGroup().sendMessage(MessageUtils.newChain(new At(e.getSender()))
-                    .plus("[MCMotd] 服务器不在线"));
+            e.getGroup().sendMessage("[MCMotd] 服务器不在线");
             return;
         }
         e.getGroup().sendMessage("[MCMotd]\nMotd: " + serverinfo.motd + "\n协议版本: " + serverinfo.agreement + "\n游戏版本: " + serverinfo.version + "\n在线: " + serverinfo.online + "/" + serverinfo.max + "\n游戏模式: " + serverinfo.gamemode);
