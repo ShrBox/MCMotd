@@ -1,6 +1,6 @@
 name: "MCMotd"
 author: "ShrBox"
 version: "0.1.1"
-main: "shrbox.github.mcmotd.MMain"
+main: "shrbox.github.mcmotd.Main"
 info: "Mirai的motd插件"
 depends: []
