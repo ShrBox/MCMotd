@@ -1,7 +1,7 @@
 # MCMotd
 
 ![Java CI with Gradle](https://github.com/ShrBox/MCMotd/workflows/Java%20CI%20with%20Gradle/badge.svg)  
-motd query plugin for Mirai
+在QQ群内查询Minecraft基岩版服务器在线状态
 
 # Download
 
@@ -9,4 +9,4 @@ motd query plugin for Mirai
 
 # Usage
 
-`!motdpe ip` or `!motdpe ip:port`
+在群内发送`!motdpe ip`或`!motdpe ip:port`
